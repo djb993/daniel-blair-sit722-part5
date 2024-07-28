@@ -1,6 +1,6 @@
 ACR_NAME="djb993cr"
 # Terminal text output colour variables: purple, red & default
-p='\033[0;35m,' 
+p='\033[0;35m' 
 r='\033[0;31m'
 d='\033[0m' 
 
