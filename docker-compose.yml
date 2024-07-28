@@ -1,1 +1,39 @@
-# Your Solution
+# ---------------------------------------------------------------
+#         This Docker Compose File Manages Multiple Dockerfiles         
+# ---------------------------------------------------------------
+#            RUN - docker-compose up -d                  
+#            VIEW - http://localhost:8000/docs           
+#            CLOSE - docker-compose down
+#            REMOVE - docker rm & rmi (container & image)
+# ---------------------------------------------------------------
+
+# Specify Docker-compose version
+version: '3.8'
+
+# This application has two services (containers) - book-catalog-service & inventory-management-service -'services' defines these containers
+services:
+  book-catalog-service:
+    # build specifies the build options. Here I only give it context of where to build this service from.
+    build: 
+      # context specifies the root directory for the build process of each service. It tells Docker where to find the Dockerfile and other service files.
+      context: ./book_catalog 
+    # Specify the image name and tag that will be built
+    image: book_catalog-servcie:1
+    # Specify the container name assigned when built
+    container_name: book_catalog-servcie
+    # Here, port 8000 on the host will be mapped to port 8000 on the container.
+    ports:
+      - "8000:8000"
+    # Environment variables to set inside the container. Here, DATABASE_URL is being set to the specified PostgreSQL connection string.
+    environment:
+      - DATABASE_URL=postgresql://cloud_native_part3_db_user:2lTh590rpWXqdnlWK0fWRHkrFjCacfXM@dpg-cqfecrt6l47c73bd1c2g-a.singapore-postgres.render.com/cloud_native_part3_db
+# -------------------------------  
+  inventory-management-service:
+    build:
+      context: ./inventory_management
+    image: inventory-management-service:1
+    container_name: inventory-management-service
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://admin:E5OJuKRE14iotwfsvHwJeqsjaKK1eKmO@dpg-cq0nb2aju9rs73b0500g-a.oregon-postgres.render.com/part2
