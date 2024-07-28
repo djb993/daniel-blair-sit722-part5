@@ -1,1 +1,85 @@
-# Your Solution
+# ------------------------------------------------------------------------------------------------------------------------------------------------
+#    This file defines Kubernetes resources for deploying and exposing two services: book-catalog-service and inventory-management-service 
+#    This file includes definitions for both Deployment and Service resources for each application. 
+#    The AKS cluster will use this file. 
+# ------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Deployment for Book Catalog Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: book-catalog-deployment
+  labels:
+    app: book-catalog-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: book-catalog-service
+  template:
+    metadata:
+      labels:
+        app: book-catalog-service
+    spec:
+      containers:
+        - name: book-catalog-service
+          image: djb993cr.azurecr.io/book-catalog-service:1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://cloud_native_part4_db_user:sKEWK5pzBkVfxdqAyMuVAEhSzCPuiwi7@dpg-cqj41nggph6c7390up3g-a.singapore-postgres.render.com/cloud_native_part4_db"
+---
+# Service for Book Catalog Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: book-catalog-service
+spec:
+  selector:
+    app: book-catalog-service
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+---
+# Deployment for Inventory Management Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-management-deployment
+  labels:
+    app: inventory-management-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory-management-service
+  template:
+    metadata:
+      labels:
+        app: inventory-management-service
+    spec:
+      containers:
+        - name: inventory-management-service
+          image: djb993cr.azurecr.io/inventory-management-service:1
+          ports:
+            - containerPort: 8001
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://admin:E5OJuKRE14iotwfsvHwJeqsjaKK1eKmO@dpg-cq0nb2aju9rs73b0500g-a.oregon-postgres.render.com/part2"
+---
+ # Servcie for Inventory Management Service 
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory-management-service
+spec:
+  selector:
+    app: inventory-management-service
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8001
+      targetPort: 8001
