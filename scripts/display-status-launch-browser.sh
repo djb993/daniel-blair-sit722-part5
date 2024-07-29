@@ -3,8 +3,8 @@ p='\033[0;35m'
 d='\033[0m'
 
 
-echo -e "\n${p}Waiting 30 seconds for services to deploy...${d}\n"
-sleep 30
+echo -e "\n${p}Waiting 60 seconds for container creation to complete...${d}\n"
+sleep 60
 
 echo "----------------------------------- Active Pods -----------------------------------"
 echo "-----------------------------------------------------------------------------------"
@@ -21,8 +21,8 @@ echo "----------------------------------------------------------------------"
 kubectl get deployments
 echo -e "----------------------------------------------------------------------\n"
 
-echo -e "${p}Waiting 30 seconds for External IPs to initiate...${d}\n"
-sleep 30
+echo -e "${p}Waiting 20 seconds to ensure External IPs have initiated...${d}\n"
+sleep 20
 
 # Get External IP addresses
 BOOK_CATALOG_IP=$(kubectl get service book-catalog-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
