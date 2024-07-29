@@ -1,5 +1,10 @@
-### Launch file using .scripts/deploy.sh (in Git Bash) ###
-# print colour
+# ===============================================================
+#         This Shell File Deploys Both Microservices         
+# ===============================================================
+#            RUN - .scripts/deploy.sh  (in Git Bash)             
+# ---------------------------------------------------------------
+
+# Terminal text output colour variables: purple & default
 p='\033[0;35m'
 d='\033[0m'
 
