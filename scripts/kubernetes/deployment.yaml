@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: book-catalog-service
-          image: djb993cr.azurecr.io/book-catalog-service:06309312a3fcc7ac9ea1c9fe085c7d42a45df2f7
+          image: djb993cr.azurecr.io/book-catalog-service:$VERSION
           ports:
             - containerPort: 8000
           env:
@@ -63,7 +63,7 @@ spec:
     spec:
       containers:
         - name: inventory-management-service
-          image: djb993cr.azurecr.io/inventory-management-service:06309312a3fcc7ac9ea1c9fe085c7d42a45df2f7
+          image: djb993cr.azurecr.io/inventory-management-service:$VERSION
           ports:
             - containerPort: 8001
           env:
