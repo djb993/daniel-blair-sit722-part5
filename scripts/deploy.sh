@@ -16,4 +16,4 @@ echo -e "\n${p}Deploying Microservices...${d}\n"
 envsubst < ./scripts/kubernetes/deploy.yaml | kubectl apply -f -
 
 # Display Status & Launch Browser
-./scripts/display-status-launch-browser.sh
+# ./scripts/display-status-launch-browser.sh
