@@ -1,33 +1,18 @@
-ACR_NAME="djb993cr"
-# Terminal text output colour variables: purple, red & default
+# Terminal text output colour variables: purple & default
 p='\033[0;35m' 
-r='\033[0;31m'
 d='\033[0m' 
 
-# Login to enable Docker Commands to interact with the Container Registry
-echo -e "${p}Logging In To Container Registry${d}"
-az acr login --name $ACR_NAME
+set -u # or set -o nounset
+: "$CONTAINER_REGISTRY"
+: "$VERSION"
+: "$REGISTRY_UN"
+: "$REGISTRY_PW"
 
 echo -e "${p}\nPushing Images...${d}\n"
+echo -e "${p}\n$CONTAINER_REGISTRY${d}\n"
+echo -e "${p}\n$VERSION${d}\n"
 
-# Push Book Catalog Image
-docker push $ACR_NAME.azurecr.io/book-catalog-service:1
-if [ $? -eq 0 ]; then
-    # Confirm Successful Push
-    echo -e "\n${p}Pushed Docker Image: $ACR_NAME.azurecr.io/book-catalog-service:1 to Azure Container Registry${d}\n"
-else
-    # Confirm Unsuccessful Push
-    echo -e "\n${r}Failed to push book-catalog-service image.${d}\n"
-    exit 1
-fi
+echo $REGISTRY_PW | docker login $CONTAINER_REGISTRY --username $REGISTRY_UN --password-stdin
 
-# Push Inventory Management Image
-docker push $ACR_NAME.azurecr.io/inventory-management-service:1
-if [ $? -eq 0 ]; then
-    # Confirm Successful Push
-    echo -e "\n${p}Pushed Docker Image: $ACR_NAME.azurecr.io/inventory-management-service:1 to Azure Container Registry${d}\n"
-else
-    # Confirm Unsuccessful Push
-    echo -e "\n${r}Failed to push inventory-management-service image.${d}\n"
-    exit 1
-fi
+docker push $CONTAINER_REGISTRY.azurecr.io/book-catalog-service:$VERSION
+docker push $CONTAINER_REGISTRY.azurecr.io/inventory-management-service:$VERSION
