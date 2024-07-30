@@ -10,9 +10,9 @@ echo -e "$\n${p}Building Images...${d}\n"
 echo -e "$\n${p}$CONTAINER_REGISTRY${d}\n"
 
 # Build Book Catalog Image
-docker build -t $CONTAINER_REGISTRY/book-catalog-service:$VERSION --file ./book_catalog .
+docker build -t $CONTAINER_REGISTRY/book-catalog-service:$VERSION ./book_catalog
 
 # Build Inventory Management Image
-docker build -t $CONTAINER_REGISTRY/inventory-management-service:$VERSION --file ./inventory_management .
+docker build -t $CONTAINER_REGISTRY/inventory-management-service:$VERSION ./inventory_management
 
 
