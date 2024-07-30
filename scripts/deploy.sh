@@ -12,8 +12,11 @@ set -u # or set -o nounset
 : "$CONTAINER_REGISTRY"
 : "$VERSION"
 
-echo -e "\n${p}Deploying Microservices...${d}\n" 
+echo -e "\n${p}Deploying Microservices...${d}\n"
+
+echo "KUBECONFIG in deploy.sh: $KUBECONFIG"
+
 envsubst < ./scripts/kubernetes/deployment.yaml | kubectl apply -f -
 
 # Display Status & Launch Browser
-# ./scripts/display-status-launch-browser.sh
+./scripts/display-status-launch-browser.sh
