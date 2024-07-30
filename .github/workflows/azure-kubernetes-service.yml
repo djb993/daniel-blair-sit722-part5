@@ -43,6 +43,7 @@ jobs:
       - name: Set Kubeconfig
         run: |
           export KUBECONFIG=$HOME/secrets/kubeconfig.txt
+          kubectl config view
       # Expand configuration template and deploy microservice.
       - name: Deploy
         run: ./scripts/deploy.sh
