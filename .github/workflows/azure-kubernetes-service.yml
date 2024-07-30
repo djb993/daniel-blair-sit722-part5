@@ -49,3 +49,5 @@ jobs:
       # Expand configuration template and deploy microservice.
       - name: Deploy
         run: ./scripts/deploy.sh
+        env:
+          KUBECONFIG: $HOME/secrets/kubeconfig.txt
