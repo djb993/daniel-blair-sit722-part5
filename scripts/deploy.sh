@@ -13,7 +13,7 @@ set -u # or set -o nounset
 : "$VERSION"
 
 echo -e "\n${p}Deploying Microservices...${d}\n" 
-envsubst < ./scripts/kubernetes/deploy.yaml | kubectl apply -f -
+envsubst < ./scripts/kubernetes/deployment.yaml | kubectl apply -f -
 
 # Display Status & Launch Browser
 # ./scripts/display-status-launch-browser.sh
