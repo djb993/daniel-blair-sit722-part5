@@ -37,8 +37,9 @@ jobs:
       # Install Kubectl and connect to cluster.
       - uses: tale/kubectl-action@v1
         with:
-          base64-kube-config: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
           kubectl-version: v1.24.2
+      - name: Set kubeconfig
+        run: kubectl config set-kubeconfig $HOME/secrets/kubeconfig.txt
       # Expand configuration template and deploy microservice.
       - name: Deploy
         run: ./scripts/deploy.sh
