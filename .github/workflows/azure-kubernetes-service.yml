@@ -16,6 +16,7 @@ jobs:
       CONTAINER_REGISTRY: ${{ secrets.CONTAINER_REGISTRY }}
       REGISTRY_UN: ${{ secrets.REGISTRY_UN }}
       REGISTRY_PW: ${{ secrets.REGISTRY_PW  }}
+      LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
 
     steps:
       # Check-out repository under $GITHUB_WORKSPACE.
@@ -36,7 +37,7 @@ jobs:
       # Install Kubectl and connect to cluster.
       - uses: tale/kubectl-action@v1
         with:
-          base64-kube-config: ${{ secrets.KUBE_CONFIG }}
+          base64-kube-config: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
           kubectl-version: v1.24.2
       # Expand configuration template and deploy microservice.
       - name: Deploy
