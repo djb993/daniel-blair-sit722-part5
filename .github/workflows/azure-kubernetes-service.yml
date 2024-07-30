@@ -36,20 +36,16 @@ jobs:
           cat $HOME/secrets/kubeconfig.txt
         env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+      # Install Kubeconfig
       - name: Install Kubectl
         uses: azure/setup-kubectl@v1
         with:
             version: v1.24.2
-      # Set KUBECONFIG
-      - name: Set KUBECONFIG
-        run: |
-          echo "KUBECONFIG=$HOME/secrets/kubeconfig.txt" >> $GITHUB_ENV
-          echo "KUBECONFIG is set to: $KUBECONFIG"
-          kubectl cluster-info dump
-        
+      # Set Kubeconfig       
       - name: Set Kubeconfig
         run: |
           export KUBECONFIG=$HOME/secrets/kubeconfig.txt
+          kubectl cluster-info dump
           
       # Expand configuration template and deploy microservice.
       - name: Deploy
