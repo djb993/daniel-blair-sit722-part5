@@ -15,3 +15,4 @@ docker build -t $CONTAINER_REGISTRY/book-catalog-service:$VERSION --file ./book_
 # Build Inventory Management Image
 docker build -t $CONTAINER_REGISTRY/inventory-management-service:$VERSION --file ./inventory_management .
 
+
