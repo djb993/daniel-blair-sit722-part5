@@ -34,12 +34,21 @@ jobs:
         run: ./scripts/decrypt-secret.sh
         env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
+      # Read base64-encoded kubeconfig
+      - name: Read Base64 Kubeconfig
+        id: read-kubeconfig
+        run: |
+          base64_kubeconfig=$(cat $HOME/secrets/kubekubeconfig.txt)
+          echo "::set-output name=base64_kubeconfig::$base64_kubeconfig"
       # Install Kubectl and connect to cluster.
-      - uses: tale/kubectl-action@v1
+      - name: Install Kubectl
+        uses: azure/setup-kubectl@v1
         with:
-          kubectl-version: v1.24.2
-      - name: Set kubeconfig
-        run: kubectl config set-kubeconfig $HOME/secrets/kubeconfig.txt
+          version: 'v1.24.2'
+      - name: Set Kubeconfig
+        uses: tale/kubectl-action@v1
+        with:
+          base64-kube-config: ${{ steps.read-kubeconfig.outputs.base64_kubeconfig }}
       # Expand configuration template and deploy microservice.
       - name: Deploy
         run: ./scripts/deploy.sh
