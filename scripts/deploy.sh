@@ -13,7 +13,7 @@ set -euo pipefail
 echo -e "\n${p}Deploying Microservices...${d}\n"
 
 # Ensure KUBECONFIG is set
-# export KUBECONFIG="$HOME/secrets/kubeconfig.txt"
+export KUBECONFIG="$HOME/secrets/kubeconfig.txt"
 
 # Debugging
 # echo "KUBECONFIG is set to: $KUBECONFIG"

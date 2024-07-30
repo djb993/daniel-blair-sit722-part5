@@ -41,9 +41,9 @@ jobs:
         with:
             version: v1.24.2
       # Set Kubeconfig       
-      - name: Set Kubeconfig
-        run: |
-          export KUBECONFIG=$HOME/secrets/kubeconfig.txt    
+      # - name: Set Kubeconfig
+        # run: |
+          # export KUBECONFIG=$HOME/secrets/kubeconfig.txt    
       # Deploy microservice.
       - name: Deploy
         run: ./scripts/deploy.sh
