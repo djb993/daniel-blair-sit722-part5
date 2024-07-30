@@ -30,7 +30,7 @@ jobs:
         run: ./scripts/push-image.sh
       # Decrypt Kubeconfig secret that is too large to store as secret
       - name: Decrypt large secret
-        run: ./scripts/decrypt_secret.sh
+        run: ./scripts/decrypt-secret.sh
         env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
       # Install Kubectl and connect to cluster.
