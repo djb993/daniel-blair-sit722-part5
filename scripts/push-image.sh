@@ -14,5 +14,5 @@ echo -e "${p}\n$VERSION${d}\n"
 
 echo $REGISTRY_PW | docker login $CONTAINER_REGISTRY --username $REGISTRY_UN --password-stdin
 
-docker push $CONTAINER_REGISTRY.azurecr.io/book-catalog-service:$VERSION
-docker push $CONTAINER_REGISTRY.azurecr.io/inventory-management-service:$VERSION
+docker push $CONTAINER_REGISTRY/book-catalog-service:$VERSION
+docker push $CONTAINER_REGISTRY/inventory-management-service:$VERSION
