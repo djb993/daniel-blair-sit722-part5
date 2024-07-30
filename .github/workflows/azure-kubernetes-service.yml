@@ -47,9 +47,9 @@ jobs:
           echo "KUBECONFIG is set to: $KUBECONFIG"
           kubectl cluster-info dump
         
-      # - name: Set Kubeconfig
-      #   run: |
-      #     export KUBECONFIG=$HOME/secrets/kubeconfig.txt
+      - name: Set Kubeconfig
+        run: |
+          export KUBECONFIG=$HOME/secrets/kubeconfig.txt
           
       # Expand configuration template and deploy microservice.
       - name: Deploy
