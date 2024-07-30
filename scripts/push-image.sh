@@ -9,10 +9,10 @@ set -u # or set -o nounset
 : "$REGISTRY_PW"
 
 echo -e "${p}\nPushing Images...${d}\n"
-echo -e "${p}\n$CONTAINER_REGISTRY${d}\n"
-echo -e "${p}\n$VERSION${d}\n"
 
 echo $REGISTRY_PW | docker login $CONTAINER_REGISTRY --username $REGISTRY_UN --password-stdin
 
 docker push $CONTAINER_REGISTRY/book-catalog-service:$VERSION
 docker push $CONTAINER_REGISTRY/inventory-management-service:$VERSION
+
+

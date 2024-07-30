@@ -33,7 +33,6 @@ jobs:
       - name: Decrypt large secret
         run: 
           ./scripts/decrypt-secret.sh
-          cat $HOME/secrets/kubeconfig.txt
         env:
           LARGE_SECRET_PASSPHRASE: ${{ secrets.LARGE_SECRET_PASSPHRASE }}
       # Install Kubeconfig
@@ -44,10 +43,8 @@ jobs:
       # Set Kubeconfig       
       - name: Set Kubeconfig
         run: |
-          export KUBECONFIG=$HOME/secrets/kubeconfig.txt
-          kubectl cluster-info dump
-          
-      # Expand configuration template and deploy microservice.
+          export KUBECONFIG=$HOME/secrets/kubeconfig.txt    
+      # Deploy microservice.
       - name: Deploy
         run: ./scripts/deploy.sh
         env:
