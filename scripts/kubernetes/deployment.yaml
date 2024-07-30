@@ -28,7 +28,7 @@ spec:
             - containerPort: 8000
           env:
             - name: DATABASE_URL
-              value: "postgresql://cloud_native_part4_db_user:sKEWK5pzBkVfxdqAyMuVAEhSzCPuiwi7@dpg-cqj41nggph6c7390up3g-a.singapore-postgres.render.com/cloud_native_part4_db"
+              value: "postgresql://cloud_native_part4_db_c1oi_user:cd1pHVFVCE5HmDOEfYe7W7hcgcCUmuRL@dpg-cqkcjjjqf0us73c78ha0-a.singapore-postgres.render.com/cloud_native_part4_db_c1oi"
 ---
 # Service for Book Catalog Service
 apiVersion: v1

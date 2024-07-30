@@ -26,7 +26,7 @@ services:
       - "8000:8000"
     # Environment variables to set inside the container. Here, DATABASE_URL is being set to the specified PostgreSQL connection string.
     environment:
-      - DATABASE_URL=postgresql://cloud_native_part4_db_user:sKEWK5pzBkVfxdqAyMuVAEhSzCPuiwi7@dpg-cqj41nggph6c7390up3g-a.singapore-postgres.render.com/cloud_native_part4_db
+      - DATABASE_URL=postgresql://cloud_native_part4_db_c1oi_user:cd1pHVFVCE5HmDOEfYe7W7hcgcCUmuRL@dpg-cqkcjjjqf0us73c78ha0-a.singapore-postgres.render.com/cloud_native_part4_db_c1oi
 # -------------------------------  
   inventory-management-service:
     build:
