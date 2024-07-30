@@ -40,7 +40,7 @@ jobs:
       - name: Read Base64 Kubeconfig
         id: read-kubeconfig
         run: |
-          base64_kubeconfig=$(cat $HOME/secrets/kubekubeconfig.txt)
+          base64_kubeconfig=$(cat $HOME/secrets/kubeconfig.txt)
           echo "::set-output name=base64_kubeconfig::$base64_kubeconfig"
       # Install Kubectl and connect to cluster.
       - name: Install Kubectl
