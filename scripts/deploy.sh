@@ -1,7 +1,7 @@
 # ===============================================================
 #         This Shell File Deploys Both Microservices         
 # ===============================================================
-#            RUN - .scripts/deploy.sh  (in Git Bash)             
+#            RUN - ./scripts/deploy.sh  (in Git Bash)             
 # ---------------------------------------------------------------
 
 # Terminal text output colour variables: purple & default
@@ -24,4 +24,4 @@ envsubst < ./scripts/kubernetes/deployment.yaml | kubectl apply -f -
 echo -e "\n${p}Deployment complete.${d}\n"
 
 # Display Status & Launch Browser
-./scripts/display-status-launch-browser.sh
+# ./scripts/display-status-launch-browser.sh
