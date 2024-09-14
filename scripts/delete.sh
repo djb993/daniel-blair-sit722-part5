@@ -26,5 +26,5 @@ echo -e "\n${p}Deleting Azure Platform Resources...${d}\n"
 terraform destroy -auto-approve
 
 # echo -e "\n${p}Removing Images...${d}\n"
-# docker rmi djb993cr.azurecr.io/book-catalog-service:1
-# docker rmi djb993cr.azurecr.io/inventory-management-service:1
+docker rmi djb993cr.azurecr.io/book-catalog-service:1
+docker rmi djb993cr.azurecr.io/inventory-management-service:1
